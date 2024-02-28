@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TROPA DO CASTRO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-color: #0D192B;
+            font-family: 'Montserrat ExtraBold', sans-serif;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 90%;
+            background-color: #142845;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .titulo {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .botao {
+            background-color: #8B9DFF;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .botao:hover {
+            background-color: #6b7cd7;
+        }
+
+        .aviso-gerar {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .quadrado {
+            width: 50px;
+            height: 50px;
+            background-color: #8B9DFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2px; /* Ajustado para adicionar um pequeno espaçamento */
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(45deg, #1e5799, #2989d8, #7db9e8, #b9d4f3);
+            position: relative;
+        }
+
+        .quadrado::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .interrogacao {
+            font-size: 24px;
+            color: black;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+            z-index: 1;
+        }
+
+        .diamante {
+            font-size: 30px;
+            color: #00FF00;
+            z-index: 1;
+            filter: drop-shadow(2px 2px 4px rgba(255, 255, 255, 0.3));
+            animation: pulse 1s infinite;
+            display: flex;
+            align-items: center;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); }
+            50% { transform: scale(1); }
+            100% { transform: scale(0.9); }
+        }
+
+        #tabelaEmojis {
+            margin-top: 20px;
+            display: none;
+        }
+
+        #info {
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .botao-site {
+            background-color: #8B9DFF;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            text-decoration: none;
+            margin-top: 20px;
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .aviso-gerar {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+            display: none;
+        }
+
+        /* Estilos para a janela do site */
+        #janela-site {
+            background-color: #142845;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        #site {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Adicionando brilho ao logo Mines */
+        #logo-mines {
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Estilos para as faixas de informações */
+        .faixa-info {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            display: none;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #142845;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .info {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1 class="titulo">TROPA DO CASTRO<span id="logo-mines">🍀💸</span></h1>
+
+    <div id="tabelaEmojis"></div>
+
+    <button id="gerarTabela" class="botao">🟢Gerar</button>
+
+    <div class="aviso-gerar">GERAR UM NOVO SINAL</div>
+
+    <!-- Botão "Site" que redireciona para um site diferente -->
+    <a href="https://seusite.com" class="botao-site">Site</a>
+      </div>
+
+      <div class="faixa-info">
+          <div class="info">Válido até: <span id="tempoRestante">60</span></div>
+          <div class="info">✅ <span id="chanceGreen">100%</span> De Acertividade</div>
+          <div class="info">💣 Minas: <span id="quantidadeMinas">3</span></div>
+          <div class="info">🔁 Nº de Tentativas: <span id="numAcessos">2</span></div>
+      </div>
+
+      <div id="janela-site">
+          <iframe id="site" src="https://brcpa777.com/yv8bhq94s" width="100%" height="400px" frameborder="0"></iframe>
+      </div>
+
+      <script>
+          // JavaScript para Mines
+
+          let segundosRestantes = 60;
+          let geracaoPermitida = true;
+
+          // Função para gerar uma tabela de emojis
+          function gerarTabela() {
+              if (!geracaoPermitida) return;
+
+              const tabela = document.getElementById("tabelaEmojis");
+              const avisoGerar = document.querySelector(".aviso-gerar");
+
+              // Inicialmente, todos os quadrados são livres
+              let tabelaHTML = "<div style='display: inline-block'>";
+              for (let i = 0; i < 25; i++) {
+                  tabelaHTML += `<div class="quadrado"><span class='interrogacao'>?</span></div>`;
+                  if ((i + 1) % 5 === 0 && i !== 24) {
+                      tabelaHTML += "</div><div style='display: inline-block'>";
+                  }
+              }
+              tabelaHTML += "</div>";
+              tabela.innerHTML = tabelaHTML;
+
+              // Atualizar as informações
+              const chanceGreen = document.getElementById("chanceGreen");
+              const quantidadeMinas = document.getElementById("quantidadeMinas");
+              const numAcessos = document.getElementById("numAcessos");
+              const tempoRestante = document.getElementById("tempoRestante");
+
+              // Aleatorizar a quantidade de minas entre 2, 3, 4 ou 5
+              const minas = [2, 3, 4, 5];
+              const quantidadeMinasAleatoria = minas[Math.floor(Math.random() * minas.length)];
+              quantidadeMinas.textContent = quantidadeMinasAleatoria;
+
+              // Aleatorizar o percentual de acerto para 90%
+              const acertividade = [90, 86, 97, 99, 100];
+              chanceGreen.textContent = acertividade[Math.floor(Math.random() * acertividade.length)] + "%";
+
+              // Exibir informações
+              tabela.style.display = "block";
+              document.querySelector(".faixa-info").style.display = "flex";
+
+              // Mostrar diamantes aleatoriamente
+              const quadrados = document.querySelectorAll('.quadrado');
+              const diamantes = Math.floor(Math.random() * (5 - 2 + 1)) + 2; // Entre 2 e 5 diamantes
+              for (let i = 0; i < diamantes; i++) {
+                  const quadradoAleatorio = quadrados[Math.floor(Math.random() * quadrados.length)];
+                  const diamante = document.createElement('span');
+                  diamante.className = 'diamante';
+                  diamante.innerHTML = '💎';
+                  quadradoAleatorio.innerHTML = '';
+                  quadradoAleatorio.appendChild(diamante);
+              }
+
+              // Desativar geração por 1 minuto
+              geracaoPermitida = false;
+              setTimeout(() => {
+                  geracaoPermitida = true;
+                  avisoGerar.style.display = "block";
+              }, 60000);
+
+              // Atualizar a cada segundo
+              const intervalo = setInterval(() => {
+                  segundosRestantes--;
+                  tempoRestante.textContent = segundosRestantes;
+                  if (segundosRestantes <= 5) { // Alterado para <= 5
+                      avisoGerar.style.display = "block";
+                  }
+                  if (segundosRestantes === 0) {
+                      clearInterval(intervalo);
+                      segundosRestantes = 60;
+                      tabela.style.display = "none";
+                      document.querySelector(".faixa-info").style.display = "none";
+                      avisoGerar.style.display = "block";
+                  }
+              }, 1000);
+          }
+
+          // Event listener para o botão "Gerar Tabela"
+          const botaoGerar = document.getElementById("gerarTabela");
+          botaoGerar.addEventListener("click", function() {
+              gerarTabela();
+              document.querySelector(".aviso-gerar").style.display = "none";
+          });
+      </script>
+
+      </body>
+      </html>
